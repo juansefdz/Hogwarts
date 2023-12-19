@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap");
 
+
 /* format page */
 * {
   padding: 0;
@@ -292,9 +293,9 @@ body {
   position: relative;
 }
 
-.personaje-imagen img {
-  width: 100px;
-  height: 150px;
+.personaje-imagen .voldemort {
+  width: 200px;
+  height: 250px;
   position: absolute;
   bottom: 20px;
   right: 20px;

@@ -1,4 +1,4 @@
-const estudianteHogwarts = {
+let estudianteHogwarts = {
   nombre: "",
   edad: "",
   padres: undefined, //boolean
