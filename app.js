@@ -18,23 +18,57 @@ ingresarHogwarts.addEventListener("click", (event) => {
 });
 
 const botonAgregar = document.querySelector(".btn-agregar");
-const nombreEstudiante = document.querySelector("#name-box");
-const edadEstudiante = document.querySelector("#edad_box");
-const padresSi = document.querySelector("#padres-si");
-const padresNo = document.querySelector("#padres-no");
-const sexo_femenino = document.querySelector("#sexo_femenino");
-const sexo_masculino = document.querySelector("#sexo_masculino");
+let nombreEstudiante = document.querySelector("#name-box");
+let edadEstudiante = document.querySelector("#edad_box");
+let padresSi = document.querySelector("#padres-si");
+let padresNo = document.querySelector("#padres-no");
+let sexo_femenino = document.querySelector("#sexo_femenino");
+let sexo_masculino = document.querySelector("#sexo_masculino");
 
 botonAgregar.addEventListener("click", (e) => {
   e.preventDefault();
-
   saveStudent();
+  setTimeout(() => {
+    nombreEstudiante.value = "";
+    edadEstudiante.value = "";
+    padresSi.checked = false;
+    padresNo.checked = false;
+    sexo_femenino.checked = false;
+    sexo_masculino.checked = false;
+    imprimirVoldemort();
+  }, 2000);
 });
 
 classDefense.addEventListener("click", (e) => {
   e.preventDefault();
+
+  if (!estudianteHogwarts.nombre) {
+    return;
+  }
   ArtesOscuras();
 });
+
+// imprimir mensaje Voldemort
+
+let mensaje = document.querySelector(".texto-acciones");
+
+let imagen = document.querySelector(".personaje-imagen");
+let img = document.createElement("img");
+
+
+function imprimirVoldemort() {
+  mensaje.innerHTML = ` <p id = "intro">
+  Se corre un rumor que el mismisimo Harry Potter ha vuelto.
+  <br>
+  <br>
+  Y con el, la llegada de nada más y nada menos que el señor .....
+  </p>`;
+  mensaje.style = "margin: 70px 15px 15px;font-size: 30px;color: #fff;text-shadow: 1px 1px 20px #000;";
+  
+  img.src = "media/voldemort.png";
+  img.style = "width: 100px;height: 150px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;";
+  imagen.appendChild(img)
+}
 
 function saveStudent() {
   const nuevoEstudiante = {
@@ -75,62 +109,66 @@ function saveStudent() {
 
   estudianteHogwarts = nuevoEstudiante;
   estudiantesNuevos.unshift(nuevoEstudiante);
-  console.log(estudiantesNuevos);
-
-  console.log(estudianteHogwarts);
 }
 
 let texto = document.querySelector("#intro");
 
 choseHouse.addEventListener("click", (e) => {
   e.preventDefault();
+
+  mensaje.innerHTML = ""
+  
+  if (!estudianteHogwarts.nombre) {
+    return;
+  }
+  
   sombreroSeleccionador(texto);
 });
 
 // SOMBRERO SELECCIONADOR
 
 function sombreroSeleccionador(texto) {
-  const img = document.querySelector(".personaje-imagen");
+  img.src = "media/hat.png";
+  img.style = "width: 100px;height: 150px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;";
+  imagen.appendChild(img);
 
-  img.innerHTML = `<img src="./media/hat.png"/> `;
-  img.setAttribute(
-    "styles",
-    "width: 100px;height: 150px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;"
-  );
-
-  texto.innerHTML = "";
-  texto.innerHTML = `SOMBRERO SELECCIONADOR: sientate y te dire tu destino y por ende tu nueva casa en Hogwarts!`;
+  mensaje.style = "margin: 70px 15px 15px;font-size: 30px;color: #fff;text-shadow: 1px 1px 20px #000;";
+  mensaje.innerHTML = `SOMBRERO SELECCIONADOR: sientate y te dire tu destino y por ende tu nueva casa en Hogwarts!`;
 
   const clase = Number(Math.floor(Math.random() * 4 + 1));
   console.log(clase);
   if (clase == 1) {
-    texto.innerHTML = "";
-    texto.innerHTML = `SOMBRERO SELECCIONADOR: siento valor... Fuerza... audacia en tu ser!\n`;
-    texto.innerHTML += `SOMBRERO SELECCIONADOR: GRYFFINDOR!`;
+    mensaje.innerHTML = "";
+    mensaje.innerHTML = `SOMBRERO SELECCIONADOR: siento valor... Fuerza... audacia en tu ser! \n`;
+    mensaje.innerHTML += `SOMBRERO SELECCIONADOR: GRYFFINDOR!\n`;
 
     estudianteHogwarts.casa = casas[0];
     let opcionesLinaje = 3;
     linaje(opcionesLinaje);
   } else if (clase == 2) {
-    texto.innerHTML = "";
-    texto.innerHTML = `SOMBRERO SELECCIONADOR: siento justicia... lealtad... paciencia... en tu ser!\n`;
-    texto.innerHTML += `SOMBRERO SELECCIONADOR: HUFFLEPUFF!`;
+    mensaje.innerHTML = "";
+    mensaje.innerHTML = `SOMBRERO SELECCIONADOR: siento justicia... lealtad... paciencia... en tu ser!
+    
+    SOMBRERO SELECCIONADOR: HUFFLEPUFF!`;
     estudianteHogwarts.casa = casas[1];
     let opcionesLinaje = 2;
     linaje(opcionesLinaje);
   } else if (clase == 3) {
-    texto.innerHTML = "";
-    texto.innerHTML = `SOMBRERO SELECCIONADOR: siento creatividad... erudición... inteligencia... en tu ser!\n`;
-    texto.innerHTML += `SOMBRERO SELECCIONADOR: RAVENCLAW!`;
+    mensaje.innerHTML = "";
+    mensaje.innerHTML = `SOMBRERO SELECCIONADOR: siento creatividad... erudición... inteligencia... en tu ser!\n`;
+    mensaje.innerHTML += `SOMBRERO SELECCIONADOR: RAVENCLAW!\n`;
     estudianteHogwarts.casa = casas[2];
     let opcionesLinaje = 3;
     linaje(opcionesLinaje);
   } else {
-    texto.innerHTML = "";
-    texto.innerHTML = `SOMBRERO SELECCIONADOR: siento ambición... determinación... astucia en tu ser!\n`;
-    texto.innerHTML += `SOMBRERO SELECCIONADOR: SLYYYTHERIN!`;
+    mensaje.innerHTML = "";
+    mensaje.innerHTML = `SOMBRERO SELECCIONADOR: siento ambición... determinación... astucia en tu ser!\n`;
+    mensaje.innerHTML += `SOMBRERO SELECCIONADOR: SLYYYTHERIN!\n`;
     estudianteHogwarts.casa = casas[3];
-    estudianteHogwarts.linaje = "Pura sangre";
+    mensaje.innerHTML += `
+    
+    SOMBRERO SELECCIONADOR: Sangre pura!! interesante!`;
+    estudianteHogwarts.linaje = "Sangre pura";
   }
 
   if (estudianteHogwarts.casa && estudianteHogwarts.linaje) {
@@ -144,50 +182,32 @@ function sombreroSeleccionador(texto) {
     linaje.setAttribute("style", "font-size:20px; font-weigth:bold");
     infoEstudiante.appendChild(linaje);
   }
-  console.log(estudianteHogwarts);
+
 }
-//PASO 3
-
-/* INVOCACION FUNCIONES */
-
-// estudiante();
-// sombreroSeleccionador();
-// transformaciones();
-//ArtesOscuras();
-// dementor();
-
-/* FUNCIONES */
-
-// function estudiante() {
-
-//   if (familia == 1) {
-//     familia = true;
-//   } else familia = false;
-
-//   const nuevoEstudiante = { nombreEstudiante, edadEstudiante, familia };
-//   estudiantesNuevos.unshift(nuevoEstudiante);
-//   console.log(estudiantesNuevos);
-
-//   const agregarInfoEstudiante = document.getElementById("agregar-estudiante");
-//   const InfoEstudiante = document.getElementById("info-estudiante");
-//   // agregar imagen segun el sexo.
-
-//   //insertar texto en tarjeta de personaje
-//   tbody.innerHTML += ``;
 
 function linaje(opcionesLinaje) {
   const linaje = Number(Math.floor(Math.random() * opcionesLinaje + 1));
   if (linaje == 1) {
-    alert(`mestizo...`);
+    mensaje.innerHTML += `
+    
+    SOMBRERO SELECCIONADOR: Un mestizo...`;
     estudianteHogwarts.linaje = "Mestizo";
   } else if (linaje == 2) {
-    alert(`un simple Muggle...`);
+    mensaje.innerHTML += `
+    
+    SOMBRERO SELECCIONADOR: Un simple Muggle...`;
     estudianteHogwarts.linaje = "Muggle";
   } else {
-    alert(`sangre pura!! interesante!`);
+    mensaje.innerHTML += `
+    
+    SOMBRERO SELECCIONADOR: Sangre pura!! interesante!`;
     estudianteHogwarts.linaje = "Sangre pura";
   }
 }
+
+// if (!estudianteHogwarts.nombre){
+//   return;
+//  } transformaciones(texto);
 
 function transformaciones() {
   let flagTransformacion = true;
