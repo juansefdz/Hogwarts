@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&display=swap");
 
-
 /* format page */
 * {
   padding: 0;
@@ -22,6 +21,7 @@ body {
     #9d9c9c   
     
   );
+ 
   font-family: "Playfair Display", serif;
   background-size: 200%;
   animation: animacionfondo 20s infinite;
@@ -183,15 +183,7 @@ body {
   overflow: hidden;
 }
 
-/* .card img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  overflow: hidden;
-  bottom: -30px;
-  left: 190px;
-} */
+
 .card h3 {
   position: absolute;
   bottom: 0;
@@ -282,25 +274,30 @@ body {
   animation: floating 10s ease-in-out infinite;
 }
 
-.texto-acciones p {
+/* .texto-acciones p {
   margin: 70px 15px 15px;
   font-size: 30px;
   
   color: #fff;
   text-shadow: 1px 1px 20px #000;
-}
+} */
+
 .personaje-imagen {
   position: relative;
 }
 
-.personaje-imagen .voldemort {
-  width: 200px;
-  height: 250px;
+/* .personaje-imagen img {
+  width: 100px;
+  height: 150px;
   position: absolute;
   bottom: 20px;
   right: 20px;
   animation: floating 10s ease-in-out infinite;
-}
+} */
+
+
+
+
 /* Keyframes */
 @keyframes animacionfondo {
   0% {
