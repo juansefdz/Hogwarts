@@ -325,9 +325,8 @@ function ArtesOscuras() {
   }
 }
 
-
-const btnEstudiante= document.querySelector("#estudiantes");
-btnEstudiante.addEventListener("click",(event)=>{
+const btnEstudiante = document.querySelector("#estudiantes");
+btnEstudiante.addEventListener("click", (event) => {
   event.preventDefault();
   location.href = "estudiantes.html";
 });

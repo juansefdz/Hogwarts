@@ -1,13 +1,54 @@
-let estudianteHogwarts = {
-  nombre: "",
-  edad: "",
-  padres: undefined, //boolean
-  linaje: "",
-  casa: "",
-  animal: "",
-};
+// let estudianteHogwarts = {
+//   nombre: "",
+//   edad: "",
+//   padres: undefined, //boolean
+//   linaje: "",
+//   casa: "",
+//   animal: "",
+//   sexo:""
+// };
+//temporal hacer quemado de impresion lista
+let estudianteHogwarts = [
+  {
+    nombre: "juan",
+    edad: "32",
+    padres: true, //boolean
+    linaje: "sangre pura",
+    casa: "slythering",
+    animal: "lobo",
+    sexo: "masculino",
+  },
+  {
+    nombre: "ana",
+    edad: "25",
+    padres: true, //boolean
+    linaje: "sangre pura",
+    casa: "hufflepuff",
+    animal: "perro",
+    sexo: "femenino",
+  },
+  {
+    nombre: "cristian",
+    edad: "15",
+    padres: true, //boolean
+    linaje: "sangre pura",
+    casa: "gryffindor",
+    animal: "caballo",
+    sexo: "masculino",
+  },
+  {
+    nombre: "alejandro",
+    edad: "25",
+    padres: true, //boolean
+    linaje: "sangre pura",
+    casa: "ravenclaw",
+    animal: "gato",
+    sexo: "masculino",
+  },
+ 
+];
 
-let estudiantesNuevos=[]
+let estudiantesNuevos = [];
 
 //casas
 
@@ -17,7 +58,6 @@ const Gryffindor = {
   cualidades: ["Valor", "Fuerza", "Audacia"],
   linaje: ["Mestizo", "Muggle", "Sangre pura"],
 };
-
 
 const Hufflepuff = {
   cualidades: ["Justicia", "Lealtad", "Paciencia"],
@@ -53,10 +93,19 @@ const tiposTransformaciones = {
   riddikulus: "", // si se hace el hechizo o no
 };
 
-const defensaContraArtesOscuras={
-
- animalPatronus:["ciervo","nutria","perro","caballo","liebre","raton","cisne","cabra","fenix","gato","jabali","lobo"]
-
+const defensaContraArtesOscuras = {
+  animalPatronus: [
+    "ciervo",
+    "nutria",
+    "perro",
+    "caballo",
+    "liebre",
+    "raton",
+    "cisne",
+    "cabra",
+    "fenix",
+    "gato",
+    "jabali",
+    "lobo",
+  ],
 };
-
-

@@ -25,10 +25,8 @@ body {
   animation: animacionfondo 20s infinite;
 }
 .title {
-  top: 10px;
-  width: 100px;
-  height: 100px;
-  margin: 20px;
+  width: 150px;
+  height: 150px;
   display: flex;
   animation: floating 10s ease-in-out infinite;
   transition: 1s;
@@ -37,7 +35,6 @@ body {
 .main-container {
   display: flex;
   flex-direction: column;
-  background: red;
   width: 90vw;
   height: 90vh;
 }
@@ -45,19 +42,17 @@ body {
   display: flex;
 }
 .estudents {
-  background: rgb(80, 39, 194);
   width: 100%;
   height: 100%;
+  padding: 20px;
 }
 .shields {
   display: flex;
+
   justify-content: center;
-  align-content: space-between;
-  padding: 50px;
   gap: 70px;
-  background: rgb(23, 255, 147);
   width: 100%;
-  height: 100%;
+  height: 150px;
   color: #fff;
   font-size: 35px;
   font-weight: bold;
@@ -71,7 +66,44 @@ body {
 .casa:hover {
   transform: scale(1.2);
 }
+/*tarjetas estudiantes*/
+.estudents{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  
+  
+}
+.card {
+  position: relative;
+  align-items: center;
+  width: 200px;
+  height: 250px;
+  box-shadow: 0 5px 10px #000;
+  background: #565556;
+  border-color: 5px solid #fff;
+  border: 10px solid #9d9c9c;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  overflow: hidden;
+}
 
+.card h3 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  line-height: 45px;
+  line-height: 45px;
+  color: #fff;
+  background-color: #787378;
+  text-align: center;
+}
+.card p {
+  padding: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+}
 /* Keyframes */
 @keyframes animacionfondo {
   0% {
