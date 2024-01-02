@@ -18,6 +18,8 @@ ingresarHogwarts.addEventListener("click", (event) => {
 });
 
 const botonAgregar = document.querySelector(".btn-agregar");
+const botonAgregarNew = document.querySelector(".btn-agregar-nuevo");
+
 let nombreEstudiante = document.querySelector("#name-box");
 let edadEstudiante = document.querySelector("#edad_box");
 let padresSi = document.querySelector("#padres-si");
@@ -47,30 +49,30 @@ botonAgregar.addEventListener("click", (e) => {
     }
   }
   const infoEstudiante = document.querySelector(".info-estudiante");
+  botonAgregar.setAttribute("styles", "display:none");
+  // Hace la validación de que todos campos estudianteHogwarts esten llenos para guardar en el array estudiantesNuevos
+  botonAgregarNew.setAttribute("styles", "display:flex");
 
-  if (estudianteHogwarts) {
-    infoEstudiante.innerHTML = "";
-    estudianteHogwarts.nombre = "";
-    estudianteHogwarts.edad = "";
-    estudianteHogwarts.casa = "";
-    estudianteHogwarts.linaje = "";
-    estudianteHogwarts.padres = undefined;
+  // if (estudianteHogwarts) {
+  //   infoEstudiante.innerHTML = "";
+  //   estudianteHogwarts.nombre = "";
+  //   estudianteHogwarts.edad = "";
+  //   estudianteHogwarts.casa = "";
+  //   estudianteHogwarts.linaje = "";
+  //   estudianteHogwarts.padres = undefined;
 
-    botonAgregar.textContent = "Agregar nuevo estudiante";
+  //   botonAgregar.textContent = "Agregar nuevo estudiante";
+  // }
 
-    setTimeout(() => {
-      saveStudent();
-    }, 1000);
-  }
   setTimeout(() => {
-    nombreEstudiante.value = "";
-    edadEstudiante.value = "";
-    padresSi.checked = false;
-    padresNo.checked = false;
-    sexo_femenino.checked = false;
-    sexo_masculino.checked = false;
+    // nombreEstudiante.value = "";
+    // edadEstudiante.value = "";
+    // padresSi.checked = false;
+    // padresNo.checked = false;
+    // sexo_femenino.checked = false;
+    // sexo_masculino.checked = false;
     imprimirVoldemort();
-  }, 1000);
+  }, 2000);
 });
 
 classDefense.addEventListener("click", (e) => {
@@ -79,6 +81,7 @@ classDefense.addEventListener("click", (e) => {
   if (!estudianteHogwarts.nombre) {
     return;
   }
+
   ArtesOscuras();
 });
 
@@ -105,34 +108,34 @@ function imprimirVoldemort() {
   imagen.appendChild(img);
 }
 
-function saveStudent() {
-  const nuevoEstudiante = {
+function createStudent() {
+  estudianteHogwarts = {
     nombre: nombreEstudiante.value,
     edad: edadEstudiante.value,
     padres: padresSi.checked ? "Si" : "No",
     sexo: sexo_femenino.checked ? "femenino" : "masculino",
-    animal: "",
   };
+
   const infoEstudiante = document.querySelector(".info-estudiante");
 
   let nombre = document.createElement("h5");
-  nombre.textContent = `Nombre: ${nuevoEstudiante.nombre}`;
+  nombre.textContent = `Nombre: ${estudianteHogwarts.nombre}`;
   nombre.setAttribute("style", "font-size:20px; font-weigth:bold");
   infoEstudiante.appendChild(nombre);
 
   let edad = document.createElement("h5");
-  edad.textContent = `Edad: ${nuevoEstudiante.edad}`;
+  edad.textContent = `Edad: ${estudianteHogwarts.edad}`;
   edad.setAttribute("style", "font-size:20px; font-weigth:bold");
   infoEstudiante.appendChild(edad);
 
   let padres = document.createElement("h5");
-  padres.textContent = `Padres: ${nuevoEstudiante.padres}`;
+  padres.textContent = `Padres: ${estudianteHogwarts.padres}`;
   padres.setAttribute("style", "font-size:20px; font-weigth:bold");
   infoEstudiante.appendChild(padres);
 
   let imgSexo = document.createElement("img");
   imgSexo.textContent = `${
-    nuevoEstudiante.sexo === "femenino"
+    estudianteHogwarts.sexo === "femenino"
       ? (imgSexo.src = "./media/mujer.png")
       : (imgSexo.src = "./media/hombre.png")
   }`;
@@ -141,9 +144,6 @@ function saveStudent() {
     "position: absolute; width: 100%; height: 100%;  overflow: hidden; bottom: -30px; left: 190px;"
   );
   infoEstudiante.appendChild(imgSexo);
-
-  estudianteHogwarts = nuevoEstudiante;
-  estudiantesNuevos.unshift(nuevoEstudiante);
 }
 
 let texto = document.querySelector("#intro");
@@ -153,15 +153,14 @@ choseHouse.addEventListener("click", (e) => {
 
   mensaje.innerHTML = "";
 
-  if (!estudianteHogwarts.nombre) {
+  if (!estudianteHogwarts) {
+    alert("Se debe ir a todas las clases antes de crear un nuevo estudiante");
     return;
   }
-
   sombreroSeleccionador(texto);
 });
 
 // SOMBRERO SELECCIONADOR
-
 function sombreroSeleccionador(texto) {
   img.src = "media/hat.png";
   img.style =
@@ -284,6 +283,10 @@ function transformaciones() {
   console.log(tiposTransformaciones.boggarts);
 }
 
+function saveStudent() {
+  estudiantesNuevos.push(estudianteHogwarts);
+}
+
 function ArtesOscuras() {
   mensaje.innerHTML = "";
   mensaje.innerHTML = `Estas en la clase de Defensa contra artes Oscuras del ${clasesyProfesores[4].clase} de las ${clasesyProfesores[4].horario}`;
@@ -324,6 +327,18 @@ function ArtesOscuras() {
     }
   }
 }
+
+// Hace la validación de que todos campos estudianteHogwarts esten llenos para guardar en el array estudiantesNuevos
+// if (!estudianteHogwarts.nombre && !estudianteHogwarts.edad && !estudianteHogwarts.padres  && !estudianteHogwarts.sexo) {
+//   createStudent();
+// } else if (!estudianteHogwarts.linaje && !estudianteHogwarts.casa) {
+//   sombreroSeleccionador(texto);
+// } else if (!estudianteHogwarts.animal) {
+//   ArtesOscuras();
+// } else {
+//   saveStudent();
+
+// }
 
 const btnEstudiante = document.querySelector("#estudiantes");
 btnEstudiante.addEventListener("click", (event) => {
