@@ -86,10 +86,9 @@ body {
 /* logo hogwarts */
 
 .secondary_container {
-  display: none;
+  display: flex;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
 }
 .title {
   display: none;

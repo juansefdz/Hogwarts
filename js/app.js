@@ -11,11 +11,11 @@ const choseHouse = document.querySelector("#sombrero");
 const classDefense = document.querySelector("#robbinson");
 
 // mostrar elementos antes de ingresar a Hogwarts
-ingresarHogwarts.addEventListener("click", (event) => {
-  event.preventDefault();
-  showContainer.setAttribute("style", "display:flex;");
-  ocultarIngreso.setAttribute("style", "display:none;");
-});
+// ingresarHogwarts.addEventListener("click", (event) => {
+//   event.preventDefault();
+//   showContainer.setAttribute("style", "display:flex;");
+//   ocultarIngreso.setAttribute("style", "display:none;");
+// });
 
 const botonAgregar = document.querySelector(".btn-agregar");
 let nombreEstudiante = document.querySelector("#name-box");

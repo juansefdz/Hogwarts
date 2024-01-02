@@ -1,173 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hogwarts</title>
     <audio src="./media/ringtones-harry-potter.mp3" id="harry_potter"></audio>
-    <link
-      href="https://fonts.cdnfonts.com/css/magic-school-one"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.cdnfonts.com/css/magic-school-one" rel="stylesheet" />
     <link rel="shortcut icon" href="./media/hogwarts.png" />
 
     <link rel="stylesheet" href="./style/style.css" />
-  </head>
-  <body>
+</head>
+
+<body>
     <section class="main_container">
-      <div class="title"></div>
-      <div class="ingreso">
-        <img src="./media/hogwartslogo.png" class="logoInicio" />
-        <button class="ingresarHogwarts">INGRESAR A HOGWARTS</button>
-        <h2>
-          <p>
-            <br />
-            ¡Es tu momento de brillar! ¡ya tienes la edad suficiente para
-            ingresar a HOGWARTS!
-          </p>
-        </h2>
-      </div>
-
-      <div class="secondary_container">
-        <img src="./media/hogwartslogo.png" class="title" />
-
-        <div class="character">
-          <div class="card" id="elementoOculto">
-            <div class="face front">
-              <h3 class="nombre"></h3>
-              <div>
-                <div>
-                  <!-- se agrega la imagen del estudiante segun el sexo por js (char-picture) -->
-                </div>
-                <div class="info-estudiante">
-                  <!-- se agrega info por js (nombre, edad, padres, linaje,) -->
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="info" id="elementoOculto">
-            <form>
-              <div class="nombre-estudiante">
-                <label for="" class="form-label">Nombre del Estudiante</label>
-                <br />
-                <input type="text" class="nombre-estudiante" id="name-box" />
-              </div>
-              <div class="sexo-estudiante">
-                <label>
-                  <input
-                    type="radio"
-                    name="genero"
-                    id="sexo_femenino"
-                    value="femenino"
-                  />
-                  Femenino
-                </label>
-                <label>
-                  <input
-                    type="radio"
-                    name="genero"
-                    id="sexo_masculino"
-                    value="masculino"
-                  />
-                  Masculino
-                </label>
-              </div>
-              <div class="edad-estudiante">
-                <label for="" class="form-label">Edad</label>
-                <br />
-                <input type="number" class="edad-estudiante" id="edad_box" />
-              </div>
-              <div class="padres-estudiante">
-                <label for="" class="form-label">Tienes padres?</label>
-                <label>
-                  <br />
-                  <input type="radio" name="padres" id="padres-si" required /> Si
-                </label>
-                <label>
-                  <input type="radio" name="padres" id="padres-no" />
-                  No
-                </label>
-              </div>
-            </form>
-          </div>
-          <button class="btn-agregar">Agregar</button>
+        <div class="title"></div>
+        <div class="ingreso">
+            <img src="./media/hogwartslogo.png" class="logoInicio" />
+            <a class="ingresarHogwarts" href="ingreso.html">INGRESAR A HOGWARTS</a>
+            <h2>
+                <p>
+                    <br />
+                    ¡Es tu momento de brillar! ¡ya tienes la edad suficiente para
+                    ingresar a HOGWARTS!
+                </p>
+            </h2>
         </div>
-
-        <div class="tercer_contenedor">
-          <!-- <img src="./media/hogwartslogo.png" alt="" /> -->
-
-          <div class="salones" id="elementoOculto">
-            <div class="titulo_salones">
-              <h1>ZONAS HOGWARTS</h1>
-            </div>
-            <div class="container_salones">
-              <div class="profesor" id="sombrero">
-                <img src="./media/hat.png" alt="Profesor Kevin Slughorn" />
-                <p>Sombrero Seleccionador</p>
-                <p>La cena</p>
-              </div>
-
-              <div class="profesor" id="kevin">
-                <img src="./media/Slughorn.png" alt="Profesor Kevin Slughorn" />
-                <p>Prof. Kevin Slughorn</p>
-                <p>Transformaciones</p>
-              </div>
-
-              <div class="profesor">
-                <img src="./media/Umbridge.png" alt="Profesor Maria Umbridge" />
-                <p>Prof. María Umbridge</p>
-                <p>Herbología</p>
-              </div>
-
-              <div class="profesor">
-                <img
-                  src="./media/Macgonagall.png"
-                  alt="Profesora Liliana Macgonagall"
-                />
-                <p>Prof. Liliana Macgonagall</p>
-                <p>Pociones</p>
-              </div>
-
-              <div class="profesor">
-                <img src="./media/jackie.png" alt="Profesora Jackie" />
-                <p>Prof. Jackie</p>
-                <p>Encantamientos</p>
-              </div>
-
-              <div class="profesor" id="robbinson">
-                <img src="./media/snape.png" alt="Profesor Robbinson Snape" />
-                <p>Prof. Robbinson Snape</p>
-                <p>Defensas Artes Oscuras</p>
-              </div>
-
-              <div class="profesor">
-                <img src="./media/hagrid.png" alt="Profesor David Rubeus" />
-                <p>Prof. David Rubeus</p>
-                <p>Animales Mágicos</p>
-              </div>
-
-              <div class="profesor">
-                <img src="./media/malfoy.png" alt="Profesor Ronald Malfoy" />
-                <p>Prof. Ronald Malfoy</p>
-                <p>Historias de Magia</p>
-              </div>
-
-              <div class="profesor" id ="estudiantes">
-                <img src="./media/grupos.png" alt="estudiantes" />
-                <p>Grupo</p>
-                <p>Estudiantes</p>
-              </div>
-            </div>
-          </div>
-          <div class="acciones-zona-hogwarts">
-            <div class="texto-acciones"></div>
-            <div class="personaje-imagen">
-          </div>
-        </div>
-      </div>
     </section>
-    <script src="./js/data.js"></script>
-    <script src="./js/app.js"></script>
-  </body>
+</body>
+
 </html>

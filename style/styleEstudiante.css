@@ -57,11 +57,11 @@ body {
   font-size: 35px;
   font-weight: bold;
   text-shadow: 1px 1px 20px #000;
-  cursor: pointer;
 }
 
 .casa {
   transition: transform 0.2s;
+  cursor: pointer;
 }
 .casa:hover {
   transform: scale(1.2);
