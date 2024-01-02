@@ -60,7 +60,7 @@ botonAgregar.addEventListener("click", (e) => {
 
     setTimeout(() => {
       saveStudent();
-    }, 500);
+    }, 1000);
   }
   setTimeout(() => {
     nombreEstudiante.value = "";
