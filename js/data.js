@@ -1,57 +1,57 @@
-// let estudianteHogwarts = {
-//   nombre: "",
-//   edad: "",
-//   padres: undefined, //boolean
-//   linaje: "",
-//   casa: "",
-//   animal: "",
-//   sexo:""
-// };
+let estudianteHogwarts = {
+  nombre: "",
+  edad: "",
+  padres: undefined, //boolean
+  linaje: "",
+  casa: "",
+  animal: "",
+  sexo:""
+};
 //temporal hacer quemado de impresion lista
-let estudianteHogwarts = [
-  // {
-  //   nombre: "juan",
-  //   edad: "32",
-  //   padres: true, //boolean
-  //   linaje: "sangre pura",
-  //   casa: "slythering",
-  //   animal: "lobo",
-  //   sexo: "masculino",
-  // },
-  // {
-  //   nombre: "ana",
-  //   edad: "25",
-  //   padres: true, //boolean
-  //   linaje: "sangre pura",
-  //   casa: "hufflepuff",
-  //   animal: "perro",
-  //   sexo: "femenino",
-  // },
-  // {
-  //   nombre: "cristian",
-  //   edad: "15",
-  //   padres: true, //boolean
-  //   linaje: "sangre pura",
-  //   casa: "gryffindor",
-  //   animal: "caballo",
-  //   sexo: "masculino",
-  // },
-  // {
-  //   nombre: "alejandro",
-  //   edad: "25",
-  //   padres: true, //boolean
-  //   linaje: "sangre pura",
-  //   casa: "ravenclaw",
-  //   animal: "gato",
-  //   sexo: "masculino",
-  // },
+// let estudianteHogwarts = [
+//   {
+//     nombre: "juan",
+//     edad: "32",
+//     padres: true, //boolean
+//     linaje: "sangre pura",
+//     casa: "slythering",
+//     animal: "lobo",
+//     sexo: "masculino",
+//   },
+//   {
+//     nombre: "ana",
+//     edad: "25",
+//     padres: true, //boolean
+//     linaje: "sangre pura",
+//     casa: "hufflepuff",
+//     animal: "perro",
+//     sexo: "femenino",
+//   },
+//   {
+//     nombre: "cristian",
+//     edad: "15",
+//     padres: true, //boolean
+//     linaje: "sangre pura",
+//     casa: "gryffindor",
+//     animal: "caballo",
+//     sexo: "masculino",
+//   },
+//   {
+//     nombre: "alejandro",
+//     edad: "25",
+//     padres: true, //boolean
+//     linaje: "sangre pura",
+//     casa: "ravenclaw",
+//     animal: "gato",
+//     sexo: "masculino",
+//   },
+ 
+// ];
 
-];
 
 let estudiantesNuevos = [];
 
 //casas
-
 const casas = ["Gryffindor", "Hufflepuff", "RavenClaw", "Slytherin"];
 
 const Gryffindor = {

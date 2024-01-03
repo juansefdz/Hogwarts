@@ -18,10 +18,9 @@ body {
     #b6acb7fa,
     #787378,
     #232223,
-    #9d9c9c   
-    
+    #9d9c9c
   );
- 
+
   font-family: "Playfair Display", serif;
   background-size: 200%;
   animation: animacionfondo 20s infinite;
@@ -160,10 +159,26 @@ body {
   transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
 }
-.btn-agregar:hover {
+
+.btn-agregar-nuevo {
+  display: none;
+  padding: 10px;
+  background-color: #fff;
+  border: 0 solid #e2e8f0;
+  border-radius: 50px;
+  box-sizing: border-box;
+  color: #77849e;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+}
+/* .btn-agregar:hover {
   background-color: #4c4d4e;
   color: #fff;
-}
+} */
 
 /* TARJETA ESTUDIANTE HOGWARTS */
 
@@ -182,7 +197,6 @@ body {
   overflow: hidden;
 }
 
-
 .card h3 {
   position: absolute;
   bottom: 0;
@@ -199,9 +213,6 @@ body {
   font-weight: bold;
   color: #fff;
 }
-
-
-
 
 /* ZONA PROFESORES */
 
@@ -269,7 +280,7 @@ body {
 }
 
 .texto-acciones {
-  flex: 1; 
+  flex: 1;
   animation: floating 10s ease-in-out infinite;
 }
 
@@ -293,9 +304,6 @@ body {
   right: 20px;
   animation: floating 10s ease-in-out infinite;
 } */
-
-
-
 
 /* Keyframes */
 @keyframes animacionfondo {
