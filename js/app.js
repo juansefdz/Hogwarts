@@ -9,16 +9,12 @@ const showContainer = document.querySelector(".secondary_container");
 const ocultarIngreso = document.querySelector(".ingreso");
 const choseHouse = document.querySelector("#sombrero");
 const classDefense = document.querySelector("#robbinson");
+const classTranformacion = document.querySelector("#kevin");
+const classPociones = document.querySelector("#lili");
 
 // mostrar elementos antes de ingresar a Hogwarts
-// ingresarHogwarts.addEventListener("click", (event) => {
-//   event.preventDefault();
-//   showContainer.setAttribute("style", "display:flex;");
-//   ocultarIngreso.setAttribute("style", "display:none;");
-// });
 
 const botonAgregar = document.querySelector(".btn-agregar");
-const botonAgregarNew = document.querySelector(".btn-agregar-nuevo");
 
 let nombreEstudiante = document.querySelector("#name-box");
 let edadEstudiante = document.querySelector("#edad_box");
@@ -27,87 +23,154 @@ let padresNo = document.querySelector("#padres-no");
 let sexo_femenino = document.querySelector("#sexo_femenino");
 let sexo_masculino = document.querySelector("#sexo_masculino");
 
-// function validarDatos() {
-//   inputs = document.getElementsByTagName("input");
-//   for (k in inputs) {
-//     if (inputs[k].value == "") {
-//       alert("Campos obligatorios");
-//       return false;
-//     }
-//   }
-// }
-// console.log(validarDatos());
-flag = botonAgregar;
+let mensaje = document.querySelector(".texto-acciones");
+let imagen = document.querySelector(".personaje-imagen");
+let img = document.createElement("img");
 
-setTimeout(() => {
+botonAgregar.style.display = "none";
+imprimirVoldemort();
+
+function mensajeInicial() {
+  mensaje.innerHTML = ` <p id = "intro">
+  Debes ingresar tu información básica para iniciar, 
+  <br>
+  luego selecciona una clase para continuar!
+  </p>`;
+  mensaje.style =
+    "margin: 70px 15px 15px;font-size: 30px;color: #fff;text-shadow: 1px 1px 20px #000;";
+
+  img.src = "media/mandragora.png";
+  img.style =
+    "width: 300px;height: 350px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;";
+  imagen.appendChild(img);
+}
+
+const validar = () => {
   createStudent();
-
-  if (flag) {
-
+  if (
+    estudianteHogwarts.nombre &&
+    estudianteHogwarts.edad &&
+    estudianteHogwarts.padres &&
+    estudianteHogwarts.sexo
+  ) {
   }
+};
 
-  botonAgregar.addEventListener("click", (e) => {
-    e.preventDefault();
-    
-    inputs = document.getElementsByTagName("input");
-    for (k in inputs) {
-      if (inputs[k].value == "") {
-        alert("Campos obligatorios");
-        return false;
-      }
-    }
-    const infoEstudiante = document.querySelector(".info-estudiante");
-    
-    // Hace la validación de que todos campos estudianteHogwarts esten llenos para guardar en el array estudiantesNuevos
-    
-    
-    if (estudianteHogwarts.linaje && estudianteHogwarts.animal && estudianteHogwarts.casa) {
-      infoEstudiante.innerHTML = "";
-      estudianteHogwarts.nombre = "";
-      estudianteHogwarts.edad = "";
-      estudianteHogwarts.casa = "";
-      estudianteHogwarts.linaje = "";
-      estudianteHogwarts.animal = "";
-      estudianteHogwarts.padres = undefined;
-      estudianteHogwarts.sexo = undefined;
-      botonAgregar.setAttribute("styles", "display:none");
-      botonAgregarNew.setAttribute("styles", "display:flex");
-    } else {
-      alert("Debes ir a todas las clases para agregar nuevo estudiante.");
-    }
-  
-    // setTimeout(() => {
-    //   // nombreEstudiante.value = "";
-    //   // edadEstudiante.value = "";
-    //   // padresSi.checked = false;
-    //   // padresNo.checked = false;
-    //   // sexo_femenino.checked = false;
-    //   // sexo_masculino.checked = false;
-    //   imprimirVoldemort();
-    // }, 2000);
-  });
-  
-}, 5000);
-
-
-classDefense.addEventListener("click", (e) => {
+botonAgregar.addEventListener("click", (e) => {
   e.preventDefault();
 
-  if (!estudianteHogwarts.nombre) {
+  const infoEstudiante = document.querySelector(".info-estudiante");
+
+  /**Formatear valores */
+  setTimeout(() => {
+    nombreEstudiante.value = "";
+    edadEstudiante.value = "";
+    padresSi.checked = false;
+    padresNo.checked = false;
+    sexo_femenino.checked = false;
+    sexo_masculino.checked = false;
+    infoEstudiante.innerHTML = "";
+    estudianteHogwarts.nombre = "";
+    estudianteHogwarts.edad = "";
+    estudianteHogwarts.casa = "";
+    estudianteHogwarts.linaje = "";
+    estudianteHogwarts.animal = "";
+    estudianteHogwarts.padres = undefined;
+    estudianteHogwarts.sexo = undefined;
+    botonAgregar.setAttribute("styles", "display:none");
+  }, 2000);
+});
+
+classTranformacion.addEventListener("click", (e) => {
+  e.preventDefault();
+  const inputs = document.getElementsByTagName("input");
+
+  for (input in inputs) {
+    if (inputs[input].value == "") {
+      alert("Campos obligatorios");
+      return false;
+    }
+  }
+  if (estudianteHogwarts.nombre !== "") {
+    transformaciones();
+    return;
+  }
+  validar();
+  transformaciones();
+});
+
+let texto = document.querySelector("#intro");
+
+choseHouse.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  if (estudianteHogwarts.casa) {
     return;
   }
 
+  const inputs = document.getElementsByTagName("input");
+
+  for (input in inputs) {
+    if (inputs[input].value == "") {
+      alert("Campos obligatorios");
+      return false;
+    }
+  }
+
+  if (estudianteHogwarts.nombre !== "") {
+    sombreroSeleccionador(texto);
+    return;
+  }
+  validar();
+
+  mensaje.innerHTML = "";
+
+  if (!estudianteHogwarts) {
+    alert("Se debe ir a todas las clases antes de crear un nuevo estudiante");
+    return;
+  }
+
+  sombreroSeleccionador(texto);
+});
+
+classDefense.addEventListener("click", (e) => {
+  e.preventDefault();
+  const inputs = document.getElementsByTagName("input");
+
+  for (input in inputs) {
+    if (inputs[input].value == "") {
+      alert("Campos obligatorios");
+      return false;
+    }
+  }
+  if (estudianteHogwarts.nombre !== "") {
+    ArtesOscuras();
+    return;
+  }
+  validar();
   ArtesOscuras();
+  botonMostrar();
+});
+
+classPociones.addEventListener("click", (e) => {
+  e.preventDefault();
+  const inputs = document.getElementsByTagName("input");
+
+  for (input in inputs) {
+    if (inputs[input].value == "") {
+      alert("Campos obligatorios");
+      return false;
+    }
+  }
+  pociones();
+  botonMostrar();
 });
 
 // imprimir mensaje Voldemort
 
-let mensaje = document.querySelector(".texto-acciones");
-
-let imagen = document.querySelector(".personaje-imagen");
-let img = document.createElement("img");
-
 function imprimirVoldemort() {
+  botonAgregar.style.display = "none";
+
   mensaje.innerHTML = ` <p id = "intro">
   Se corre un rumor que el mismisimo Harry Potter ha vuelto.
   <br>
@@ -119,8 +182,12 @@ function imprimirVoldemort() {
 
   img.src = "media/voldemort.png";
   img.style =
-    "width: 100px;height: 150px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;";
+    "width: 200px;height: 250px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;";
   imagen.appendChild(img);
+
+  setTimeout(() => {
+    mensajeInicial();
+  }, 4000);
 }
 
 function createStudent() {
@@ -159,39 +226,13 @@ function createStudent() {
     "position: absolute; width: 100%; height: 100%;  overflow: hidden; bottom: -30px; left: 190px;"
   );
   infoEstudiante.appendChild(imgSexo);
-
-  setTimeout(() => {
-    // nombreEstudiante.value = "";
-    // edadEstudiante.value = "";
-    // padresSi.checked = false;
-    // padresNo.checked = false;
-    // sexo_femenino.checked = false;
-    // sexo_masculino.checked = false;
-    imprimirVoldemort();
-  }, 2000);
-
-  flag = true;
 }
-
-let texto = document.querySelector("#intro");
-
-choseHouse.addEventListener("click", (e) => {
-  e.preventDefault();
-
-  mensaje.innerHTML = "";
-
-  if (!estudianteHogwarts) {
-    alert("Se debe ir a todas las clases antes de crear un nuevo estudiante");
-    return;
-  }
-  sombreroSeleccionador(texto);
-});
 
 // SOMBRERO SELECCIONADOR
 function sombreroSeleccionador(texto) {
   img.src = "media/hat.png";
   img.style =
-    "width: 100px;height: 150px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;";
+    "width: 200px;height: 350px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;";
   imagen.appendChild(img);
 
   mensaje.style =
@@ -279,55 +320,80 @@ function linaje(opcionesLinaje) {
   }
 }
 
-// if (!estudianteHogwarts.nombre){
-//   return;
-//  } transformaciones(texto);
-
 function transformaciones() {
+  mensaje.innerHTML = `Estás en la clase de Transformaciones 
+  <br>del ${clasesyProfesores[0].clase} de las ${clasesyProfesores[0].horario}`;
+  mensaje.style =
+    "margin: 70px 15px 15px;font-size: 30px;color: #fff;text-shadow: 1px 1px 20px #000;";
+  img.src = "./media/Slughorn.png";
+  img.style =
+    "width: 200px;height: 250px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;";
+  imagen.appendChild(img);
   let flagTransformacion = true;
   let boggartPresente = true;
 
-  if (boggartPresente == true) {
-    alert(`en el aula hay un boggart presente`);
-    alert(`te preparas para hacer el hechizo Riddikulus sobre el!`);
-    do {
-      alert(`conjurando Riddikulus`);
-      const transformacion = Number(Math.floor(Math.random() * 2 + 1));
-      alert(`intentando hacer el hechizo Riddikulus... sobre el boggart`);
-      if (transformacion == 1) {
-        alert(
-          `logras hacer perfectamente el hechizo riddikulus sobre el boggart`
-        );
-        tiposTransformaciones.riddikulus = "ha sido usado riddikulus";
-        alert(`el boggart cambia de forma y ha sido derrotado!`);
-        flagTransformacion = false;
-        tiposTransformaciones.boggarts = "ha sido derrotado.";
-      }
-    } while (flagTransformacion == true);
-  } else alert(`el boggart no esta presente`);
+  if (boggartPresente) {
+    setTimeout(() => {
+      mensaje.innerHTML = `En el aula hay un boggart presente`;
+      mensaje.innerHTML += `Te preparas para hacer el hechizo Riddikulus sobre el!`;
+      img.src = "./media/boggart.png";
+      img.style =
+        "width: 200px;height: 350px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;";
+      imagen.appendChild(img);
+    }, 2000);
 
-  console.log(tiposTransformaciones.riddikulus);
-  console.log(tiposTransformaciones.boggarts);
-}
+    setTimeout(() => {
+      do {
+        mensaje.innerHTML = `Conjurando Riddikulus`;
+        const transformacion = Number(Math.floor(Math.random() * 2 + 1));
 
-function saveStudent() {
-  estudiantesNuevos.push(estudianteHogwarts);
+        mensaje.innerHTML += `Intentando hacer el hechizo Riddikulus... sobre el boggart
+        
+                `;
+        if (transformacion == 1) {
+          mensaje.innerHTML = `Logras hacer perfectamente el hechizo
+                  <br>
+                  riddikulus sobre el boggart
+        
+                  `;
+
+          tiposTransformaciones.riddikulus += "Ha sido usado riddikulus";
+          mensaje.innerHTML += `El boggart cambia de forma  
+          <br>ha sido derrotado!`;
+          flagTransformacion = false;
+          tiposTransformaciones.boggarts = "Ha sido derrotado.";
+        }
+      } while (flagTransformacion);
+    }, 5000);
+  } else {
+    alert(`El boggart no esta presente`);
+  }
 }
 
 function ArtesOscuras() {
   mensaje.innerHTML = "";
-  mensaje.innerHTML = `Estas en la clase de Defensa contra artes Oscuras del ${clasesyProfesores[4].clase} de las ${clasesyProfesores[4].horario}`;
+  mensaje.innerHTML = `Estas en la clase de Defensa contra artes Oscuras
+  
+  del ${clasesyProfesores[4].clase} de las ${clasesyProfesores[4].horario}`;
+  mensaje.style =
+    "margin: 70px 15px 15px;font-size: 30px;color: #fff;text-shadow: 1px 1px 20px #000;";
 
-  if (estudianteHogwarts.animal === "") {
+  img.src = "media/snape.png";
+  img.style =
+    "width: 200px;height: 250px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;";
+  imagen.appendChild(img);
+
+  if (!estudianteHogwarts.animal) {
     generarPatronus();
   }
 
   function generarPatronus() {
     const randomPatronus = Number(
       Math.floor(
-        Math.random() * defensaContraArtesOscuras.animalPatronus.length + 1
+        Math.random() * defensaContraArtesOscuras.animalPatronus.length
       )
     );
+
     let animal = defensaContraArtesOscuras.animalPatronus[randomPatronus];
     estudianteHogwarts.animal = animal;
 
@@ -342,33 +408,86 @@ function ArtesOscuras() {
     }
   }
 
+  //dementor invocation
+  setTimeout(() => {
+    dementor();
+  }, 2000);
+
   function dementor() {
     if (estudianteHogwarts.animal !== "") {
-      alert(
-        `tu ${estudianteHogwarts.animal} lucha fuertemente con el dementor y logra que se aleje despues de un gran rayo de luz.`
-      );
+      alert("Ha aparecido un Dementor!!!!");
+      mensaje.innerHTML = `Tu ${estudianteHogwarts.animal} lucha fuertemente con el dementor 
+      
+      y logra que se aleje despues de un gran rayo de luz.`;
     } else {
-      alert(
-        `has sido absorbido por el dementor y eres llevado directamente a la enfermeria!`
-      );
+      mensaje.innerHTML = `Has sido absorbido por el dementor y 
+      eres llevado directamente a la enfermeria!`;
     }
   }
 }
-
-// Hace la validación de que todos campos estudianteHogwarts esten llenos para guardar en el array estudiantesNuevos
-// if (!estudianteHogwarts.nombre && !estudianteHogwarts.edad && !estudianteHogwarts.padres  && !estudianteHogwarts.sexo) {
-//   createStudent();
-// } else if (!estudianteHogwarts.linaje && !estudianteHogwarts.casa) {
-//   sombreroSeleccionador(texto);
-// } else if (!estudianteHogwarts.animal) {
-//   ArtesOscuras();
-// } else {
-//   saveStudent();
-
-// }
 
 const btnEstudiante = document.querySelector("#estudiantes");
 btnEstudiante.addEventListener("click", (event) => {
   event.preventDefault();
   location.href = "estudiantes.html";
 });
+
+function pociones() {
+  const tiempoRandom = Number(Math.floor(Math.random() * 10));
+  if (tiempoRandom <= clasePociones.ingredientes.recuperacion) {
+    mensaje.innerHTML = `
+      <p>Fracasó la poción y explotó 😒💣🤢</p>
+    `;
+    setTimeout(() => {
+      mensaje.innerHTML = `
+      <p>Te teletrasportas magicamente a ${clasesyProfesores[5].clase}</p>
+    `;
+
+      animalesMagicos();
+    }, 3000);
+  } else
+    mensaje.innerHTML = `
+  <p>LILIANA: Que bonita poción has creado!! me impresiona tu talento para las pocimas <3 </p>
+`;
+  mensaje.style =
+    "margin: 70px 15px 15px;font-size: 30px;color: #fff;text-shadow: 1px 1px 20px #000;";
+
+  img.src = "media/Macgonagall.png";
+  img.style =
+    "width: 200px;height: 250px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;";
+  imagen.appendChild(img);
+}
+
+function animalesMagicos() {
+  mensaje.innerHTML = `
+  <p>RUBEUS:¿Qué haces en la clase de Animales Mágicos?</p>
+ `;
+  mensaje.innerHTML += `
+  <p>RUBEUS:Estabas jugando de nuevo con las pocimas de Liliana? ;) guiño guiño</p>
+ `;
+  img.src = "./media/hagrid.png";
+  img.style =
+    "width: 200px;height: 350px;position: absolute;bottom: 20px;right: 20px;animation: floating 10s ease-in-out infinite;";
+  imagen.appendChild(img);
+}
+
+function botonMostrar() {
+  if (
+    estudianteHogwarts.nombre &&
+    estudianteHogwarts.sexo &&
+    estudianteHogwarts.animal &&
+    estudianteHogwarts.linaje &&
+    estudianteHogwarts.edad &&
+    estudianteHogwarts.padres &&
+    estudianteHogwarts.casa
+  ) {
+    botonAgregar.style.display = "flex";
+  } else {
+    botonAgregar.style.display = "none";
+    setTimeout(() => {
+      alert(
+        `La información del estudiante no esta completa, debes completar toda la información para agregar el estudiante`
+      );
+    }, 1000);
+  }
+}

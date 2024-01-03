@@ -160,25 +160,8 @@ body {
   box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
 }
 
-.btn-agregar-nuevo {
-  display: none;
-  padding: 10px;
-  background-color: #fff;
-  border: 0 solid #e2e8f0;
-  border-radius: 50px;
-  box-sizing: border-box;
-  color: #77849e;
-  cursor: pointer;
-  font-size: 20px;
-  font-weight: 600;
-  text-align: center;
-  transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
-}
-/* .btn-agregar:hover {
-  background-color: #4c4d4e;
-  color: #fff;
-} */
+
+
 
 /* TARJETA ESTUDIANTE HOGWARTS */
 
@@ -284,26 +267,13 @@ body {
   animation: floating 10s ease-in-out infinite;
 }
 
-/* .texto-acciones p {
-  margin: 70px 15px 15px;
-  font-size: 30px;
-  
-  color: #fff;
-  text-shadow: 1px 1px 20px #000;
-} */
+
 
 .personaje-imagen {
   position: relative;
 }
 
-/* .personaje-imagen img {
-  width: 100px;
-  height: 150px;
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  animation: floating 10s ease-in-out infinite;
-} */
+
 
 /* Keyframes */
 @keyframes animacionfondo {
